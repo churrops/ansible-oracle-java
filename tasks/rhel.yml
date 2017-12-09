@@ -1,0 +1,14 @@
+---
+- name: RHEL/Centos | Removing Openjdk 1.8.0
+  yum: name=java-1.8.0-openjdk state=absent
+  when: openjdk == 1
+
+- name: RHEL/Centos | Downloading Java 8 sdk
+  command: >
+    wget --no-cookies --no-check-certificate
+    --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" {{ jre_url }}
+    chdir=/opt
+
+- name: RHEL/Centos | Install
+  yum:
+    name: 

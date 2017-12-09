@@ -1,0 +1,14 @@
+---
+- name: Oracle Java | Add ppa repo
+  apt_repository:
+    repo: 'ppa:webupd8team/java'
+
+- name: Oracle Java | Install package
+  apt:
+    name: oracle-java8-installer
+    state: present
+    update_cache: yes
+
+- name: Oracle Java | Remove useless packages from the cache
+  apt:
+    autoclean: yes 
